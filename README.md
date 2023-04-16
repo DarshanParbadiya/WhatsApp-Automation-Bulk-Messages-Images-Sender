@@ -36,7 +36,10 @@ for script to run please install this packages using the commands given here
 ```
 
 
-#### 5. Selenium: Run in command prompt pip install selenium
+#### 5. Selenium: Run in command prompt 
+```bash
+pip install selenium
+```
 * Web Driver: Run in command prompt 
 ```bash
   pip install webdriver_manager
