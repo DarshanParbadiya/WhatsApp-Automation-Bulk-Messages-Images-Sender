@@ -3,6 +3,9 @@
 
 This project helps to send bluk whatsapp messages without saving in contacts. Simply put contact numbers into EXCEL sheet, then run this scripts accordingly to your need. 
 
+### GUI of this same script can be found in release v1.1
+![image](https://user-images.githubusercontent.com/65885245/233088885-6cb16095-1f8a-4fa0-8bc0-dd0a669f5f41.png)
+
 ### This project contains two scripts 
 - #### 1. script.py : for sending text messages
 - #### 2. image.py : for sending images 
