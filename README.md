@@ -4,6 +4,8 @@ This project helps to send bluk whatsapp messages without saving in contacts. Si
 
 ### GUI of this same script can be found in release v1.2
 ![image](https://user-images.githubusercontent.com/65885245/233774628-1b19f651-b05e-4c8e-a3a7-e34113fc429b.png)
+![image](https://user-images.githubusercontent.com/65885245/233775229-8903d511-4b23-4f16-b48b-c00ee567e597.png)
+
 
 ### This project containts script for running above software
 
@@ -73,8 +75,16 @@ pip install selenium
 - Run this command using CMD from the same directory where this script is located
 
 ```bash
-  whatsapp_helper.py
+  python whatsapp_helper.py
 ```
+## 4. Instructions to use 
+- Use open Whatsapp button to open chrome tab and scan QR code
+- this step is only required once then you can load multiple excel file and send all the message again and again. No need to scan QR for next Excel file.
+- After doing above step send message button becomes available.
+- Load the Excel file and image accodingly.
+- Choose type of message to be sent and click on send.
+- This also opens debugger window to show which steps are being performed by the software. 
+- at the end of the script status of the message will be available in status section. 
 
 ## FAQ
 
