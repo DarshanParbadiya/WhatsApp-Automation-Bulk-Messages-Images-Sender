@@ -101,7 +101,7 @@ attachment_button = WebDriverWait(driver, 35).until(EC.element_to_be_clickable((
 ```
 
 in above's code **change (By.XPATH, 'new whatsapp attributes')**
-for this you need to know little bit of HTML. sry by can't help more than this. I might not change the code but alwayscontributions are always accepted.
+for this you need to know little bit of HTML.  
 
 #### Question 3 errors due to changes in selenium syntax
 
