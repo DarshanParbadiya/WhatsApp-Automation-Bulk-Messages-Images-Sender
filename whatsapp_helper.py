@@ -29,7 +29,8 @@ message_sender_column = [
      sg.Frame('Sending buttons', buttons_frame)],
     [sg.Frame('Excel file input', [
         [
-            sg.In(size=(42, 1), enable_events=True, key='-excel location-'),
+            sg.In(size=(42, 1), enable_events=True, key='-excel location-',
+                  tooltip='Please select Excel file containing Numbers'),
             sg.FileBrowse(file_types=[('Excel files', '*.xlsx')])
         ],
 
@@ -43,34 +44,55 @@ message_sender_column = [
 ]
 image_frame = [
     [
-        sg.In(size=(50, 2), enable_events=True, key='-image location-'),
+        sg.In(size=(50, 2), enable_events=True, key='-image location-',
+              tooltip='Please Select Any file that you want to send'),
         sg.FileBrowse(),
     ],
     [sg.Button('Load Image')],
 ]
 
 
+features_frame = [[sg.Button('Stop', disabled=True, tooltip='Stop sending Messages'),
+                   sg.Button('Export All numbers with Status',
+                             disabled=True, tooltip='Export status to csv file.'),
+
+                   ]]
+
 invalid_wait = [[sg.Text("Invalid Wait"), sg.Spin(
-    time_range, initial_value=5, readonly=True, size=2, enable_events=True, key='-INVALID WAIT-')]]
+    time_range, initial_value=5, readonly=True, size=2, enable_events=True, key='-INVALID WAIT-', tooltip='Time to validate Invalid Number')]]
 upload_wait = [[sg.Text("Upload wait"), sg.Spin(
-    time_range, initial_value=10, readonly=True, size=2, enable_events=True, key='-UPLOAD WAIT-')]]
+    time_range, initial_value=10, readonly=True, size=2, enable_events=True, key='-UPLOAD WAIT-', tooltip='Time to wait for file Upload')]]
 
 no_of_attempts = [[sg.Text("Attempts"), sg.Spin(
     time_range, initial_value=2, readonly=True, size=3, enable_events=True, key='-ATTEMPTS-')]]
 
+stop = [[sg.Text("set 1 to stop"), sg.Spin(
+    time_range, initial_value=2, readonly=True, size=3, enable_events=True, key='-STOP-')]]
+
 buttons_frame = [[sg.Frame("Invalid wait", invalid_wait), sg.Frame(
     "Upload wait", upload_wait), sg.Frame("Initial wait", wait_attachment)], ]
+
+export_frame = [[sg.Button('Export sent Numbers', disabled=True, tooltip='Export status to csv file.'),
+                 sg.Button('Export invalid Numbers', disabled=True,
+                           tooltip='Export status to csv file.'),
+                 sg.Button('Export not sent Numbers', disabled=True, tooltip='Export status to csv file.')]]
+
 output_column = [
     # [sg.Text('Image Location')],
-    [sg.Frame("No of attempts", no_of_attempts)],
+    [sg.Frame("No of attempts", no_of_attempts), sg.Frame('Stop', stop), sg.Frame(
+        "Additional Buttons", features_frame)],
+    [sg.Frame("Export Buttons",  export_frame)],
     [sg.Frame("Delay timings", buttons_frame)],
+
+
+
     [sg.Frame('Image Location', image_frame, pad=(0, 10))],
 
 
 
-    [sg.Frame('Image Status', [[sg.Listbox(values=[], size=(80, 2),
+    [sg.Frame('Image Status', [[sg.Listbox(values=[], size=(75, 2),
                                            key="-image status-", horizontal_scroll=True)],])],
-    [sg.Frame('Numbers List', [[sg.Listbox(values=[], size=(80, 20),
+    [sg.Frame('Numbers List', [[sg.Listbox(values=[], size=(70, 15),
               key="-numbers list-", horizontal_scroll=True)],])],
 
 
@@ -104,8 +126,28 @@ img_msg = []
 excel_msg = []
 log = []
 log_window_messages = []
+all_numbers = []
+sent_numbers = []
+not_sent_numbers = []
+invalid_numbers = []
 invisible_emoji = '‍'
 # window['Send'].update(disabled=True)
+
+
+def update_all_numbers(new_number, status):
+    all_numbers.append([new_number, status])
+
+
+def update_sent_numbers(new_number, status):
+    sent_numbers.append([new_number, status])
+
+
+def update_not_sent_numbers(new_number, status):
+    not_sent_numbers.append([new_number, status])
+
+
+def update_invalid_numbers(new_number, status):
+    invalid_numbers.append([new_number, status])
 
 
 def update_log(log, msg):
@@ -150,6 +192,35 @@ while True:
             sg.popup_ok(msg)
             # sg.Print(msg)
             continue
+
+    elif event == 'Stop':
+        window['Stop'].update(disabled=True)
+        sg.Print('Stopping sending messages')
+        break
+
+    elif event == 'Export All numbers with Status':
+        import pandas as pd
+        import numpy as np
+        pd.DataFrame(all_numbers).to_csv('All_Numbers.csv',
+                                         index_label="Index", header=['Numbers', 'Status'])
+
+    elif event == 'Export sent Numbers':
+        import pandas as pd
+        import numpy as np
+        pd.DataFrame(sent_numbers).to_csv('Sent_Numbers.csv',
+                                          index_label="Index", header=['Numbers', 'Status'])
+
+    elif event == 'Export invalid Numbers':
+        import pandas as pd
+        import numpy as np
+        pd.DataFrame(invalid_numbers).to_csv('invalid_numbers.csv',
+                                             index_label="Index", header=['Numbers', 'Status'])
+
+    elif event == 'Export not sent Numbers':
+        import pandas as pd
+        import numpy as np
+        pd.DataFrame(not_sent_numbers).to_csv('not_sent_numbers.csv',
+                                              index_label="Index", header=['Numbers', 'Status'])
 
     # Loading excel--------------------------------------------------------------------------------------------------------------
     elif event == 'Load Excel':
@@ -243,6 +314,11 @@ while True:
     # send button trigger --------------------------------------------------------
     elif event == 'Send':
 
+        window['Export All numbers with Status'].update(disabled=False)
+        window['Export sent Numbers'].update(disabled=False)
+        window['Export invalid Numbers'].update(disabled=False)
+        window['Export not sent Numbers'].update(disabled=False)
+
         # getting type of message from dropdown
         message_type = values['-msg type-']
         # ask user to continue with the choice
@@ -255,6 +331,11 @@ while True:
                 if (message_type == msg_type[0]):
                     sg.Print('inside send text messages')
                     log = []
+                    all_numbers = [[0, 0]]
+                    sent_numbers = [[0, 0]]
+                    not_sent_numbers = [[0, 0]]
+                    invalid_numbers = [[0, 0]]
+
                     try:
 
                         sg.Print('inside try')
@@ -275,16 +356,23 @@ while True:
                             sg.Print("different messages for everyone")
 
                         # count = 0
-                        wait_attachment = values['-WAIT ATTACHMENT-']
-                        invalid_wait_time = values['-INVALID WAIT-']
-                        no_of_attempts = values['-ATTEMPTS-']
 
                         rows = len(excel_data.index)
                         window['-PBAR-'].update(current_count=0, max=rows)
+
+                        window['Stop'].update(disabled=False)
+
                         try:
                             for count in range(rows):
                                 window['-PBAR-'].update(current_count=count+1)
                                 window['-OUT-'].update(count+2)
+
+                                wait_attachment = values['-WAIT ATTACHMENT-']
+                                invalid_wait_time = values['-INVALID WAIT-']
+                                no_of_attempts = values['-ATTEMPTS-']
+                                stop_status = values['-STOP-']
+                                if (stop_status == 1):
+                                    break
 
                                 if (is_same_message == True):
                                     message = excel_data['Message'][0]
@@ -303,12 +391,13 @@ while True:
                                     sg.Print(
                                         "-------------------------------------------------------")
                                     sg.Print('starting to send message to ' +
-                                            str(excel_data['Contact'][count]))
+                                             str(excel_data['Contact'][count]))
                                     sg.Print(
                                         "-------------------------------------------------------")
                                     while attempt < no_of_attempts:
                                         attempt += 1
-                                        msg = 'ATTEMPT NO: '+str(attempt) + '⭕⭕⭕'
+                                        msg = 'ATTEMPT NO: ' + \
+                                            str(attempt) + '⭕⭕⭕'
                                         sg.Print(msg)
                                         try:
 
@@ -350,7 +439,8 @@ while True:
 
                                                     msg = 'waiting for send button to be clicked max wait ' + \
                                                         str(wait_attachment) + \
-                                                        " attempt "+str(attempt)
+                                                        " attempt " + \
+                                                        str(attempt)
 
                                                     click_btn = WebDriverWait(driver, wait_attachment).until(EC.element_to_be_clickable(
                                                         (By.XPATH, "//button[@data-testid='compose-btn-send']")))
@@ -359,7 +449,8 @@ while True:
                                                 except:
 
                                                     msg = "error finding chat button " + \
-                                                        " attempt "+str(attempt)
+                                                        " attempt " + \
+                                                        str(attempt)
                                                     sg.Print(msg)
                                                     try:
                                                         msg = "Checking for invalid waiting " + \
@@ -428,30 +519,51 @@ while True:
                                                 if (attempt == 1):
                                                     msg = str(
                                                         count+2) + ". " + str(excel_data['Contact'][count]) + '✔️'
+
                                                 else:
+                                                    all_numbers.pop()
+                                                    sent_numbers.pop()
                                                     msg = str(
                                                         count+2) + ". " + str(excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt) + '✔️'
                                                 update_log(log, msg)
                                                 sg.Print(msg)
+                                                update_all_numbers(
+                                                    str(excel_data['Contact'][count]), 'Sent')
+                                                update_sent_numbers(
+                                                    str(excel_data['Contact'][count]), 'Sent')
+
                                             else:
                                                 if is_invalid == True and sent == False:
                                                     if (attempt == 1):
                                                         msg = str(count+2) + ". " + str(
                                                             excel_data['Contact'][count]) + " ❎ invalid user ❎"
                                                     else:
+                                                        all_numbers.pop()
+                                                        invalid_numbers.pop()
                                                         msg = str(count+2) + ". " + str(
                                                             excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt)+" ❎ invalid user ❎"
                                                     update_log(log, msg)
                                                     sg.Print(msg)
+
+                                                    update_all_numbers(
+                                                        str(excel_data['Contact'][count]), 'Invalid')
+                                                    update_invalid_numbers(
+                                                        str(excel_data['Contact'][count]), 'Invalid')
                                                 else:
                                                     if (attempt == 1):
                                                         msg = msg = str(
                                                             count+2) + ". " + str(excel_data['Contact'][count]) + '❌'
                                                     else:
+                                                        all_numbers.pop()
+                                                        not_sent_numbers.pop()
                                                         msg = str(
                                                             count+2) + ". " + str(excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt) + '❌'
                                                     update_log(log, msg)
                                                     sg.Print(msg)
+                                                    update_all_numbers(
+                                                        str(excel_data['Contact'][count]), 'Not Sent')
+                                                    update_not_sent_numbers(
+                                                        str(excel_data['Contact'][count]), 'Not Sent')
 
                         except:
                             msg = "could not complete all the numbers"
@@ -475,6 +587,10 @@ while True:
 
                 elif message_type == msg_type[1]:
                     log = []
+                    all_numbers = [[0, 0]]
+                    sent_numbers = [[0, 0]]
+                    not_sent_numbers = [[0, 0]]
+                    invalid_numbers = [[0, 0]]
                     try:
                         if excel_path != None and excel_path != '':
                             pass
@@ -499,18 +615,24 @@ while True:
                                 pass
                             raise Exception("image is not loaded 🗄️")
 
-                        image_upload_time = values['-UPLOAD WAIT-']
-                        wait_attachment = values['-WAIT ATTACHMENT-']
-                        invalid_wait_time = values['-INVALID WAIT-']
-                        no_of_attempts = values['-ATTEMPTS-']
-
                         sg.Print(no_of_attempts)
                         rows = len(excel_data.index)
                         window['-PBAR-'].update(current_count=0, max=rows)
+
+                        window['Stop'].update(disabled=False)
+
                         try:
                             for count in range(rows):
                                 window['-PBAR-'].update(current_count=count+1)
                                 window['-OUT-'].update(count+2)
+
+                                image_upload_time = values['-UPLOAD WAIT-']
+                                wait_attachment = values['-WAIT ATTACHMENT-']
+                                invalid_wait_time = values['-INVALID WAIT-']
+                                no_of_attempts = values['-ATTEMPTS-']
+                                stop_status = values['-STOP-']
+                                if (stop_status == 1):
+                                    break
 
                                 if (count == rows):
                                     break
@@ -633,29 +755,48 @@ while True:
                                                     msg = str(
                                                         count+2) + ". " + str(excel_data['Contact'][count]) + '✔️'
                                                 else:
+                                                    all_numbers.pop()
+                                                    sent_numbers.pop()
                                                     msg = str(
                                                         count+2) + ". " + str(excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt) + '✔️'
                                                 update_log(log, msg)
                                                 sg.Print(msg)
+                                                update_all_numbers(
+                                                    str(excel_data['Contact'][count]), 'Sent')
+                                                update_sent_numbers(
+                                                    str(excel_data['Contact'][count]), 'Sent')
                                             else:
                                                 if is_invalid == True and sent == False:
                                                     if (attempt == 1):
                                                         msg = str(count+2) + ". " + str(
                                                             excel_data['Contact'][count]) + " ❎ invalid user ❎"
                                                     else:
+                                                        all_numbers.pop()
+                                                        invalid_numbers.pop()
                                                         msg = str(count+2) + ". " + str(
                                                             excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt)+" ❎ invalid user ❎"
                                                     update_log(log, msg)
                                                     sg.Print(msg)
+                                                    update_all_numbers(
+                                                        str(excel_data['Contact'][count]), 'Invalid')
+                                                    update_invalid_numbers(
+                                                        str(excel_data['Contact'][count]), 'Invalid')
+
                                                 else:
                                                     if (attempt == 1):
                                                         msg = msg = str(
                                                             count+2) + ". " + str(excel_data['Contact'][count]) + '❌'
                                                     else:
+                                                        all_numbers.pop()
+                                                        not_sent_numbers.pop()
                                                         msg = str(
                                                             count+2) + ". " + str(excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt) + '❌'
                                                     update_log(log, msg)
                                                     sg.Print(msg)
+                                                    update_all_numbers(
+                                                        str(excel_data['Contact'][count]), 'Not Sent')
+                                                    update_not_sent_numbers(
+                                                        str(excel_data['Contact'][count]), 'Not Sent')
 
                         except:
                             msg = "could not complete all the numbers"
@@ -669,6 +810,10 @@ while True:
                 # sending Images with message-------------------------------------------------------------------
                 elif message_type == msg_type[2]:
                     log = []
+                    all_numbers = [[0, 0]]
+                    sent_numbers = [[0, 0]]
+                    not_sent_numbers = [[0, 0]]
+                    invalid_numbers = [[0, 0]]
                     try:
                         if excel_path != None and excel_path != '':
                             pass
@@ -705,17 +850,26 @@ while True:
                             sg.Print("different messages for everyone")
 
                         count = 0
-                        image_upload_time = values['-UPLOAD WAIT-']
-                        wait_attachment = values['-WAIT ATTACHMENT-']
-                        invalid_wait_time = values['-INVALID WAIT-']
-                        no_of_attempts = values['-ATTEMPTS-']
 
                         rows = len(excel_data.index)
                         window['-PBAR-'].update(current_count=0, max=rows)
+
+                        window['Stop'].update(disabled=False)
+
                         try:
                             for count in range(rows):
                                 window['-PBAR-'].update(current_count=count+1)
                                 window['-OUT-'].update(count+2)
+
+                                image_upload_time = values['-UPLOAD WAIT-']
+                                wait_attachment = values['-WAIT ATTACHMENT-']
+                                invalid_wait_time = values['-INVALID WAIT-']
+                                no_of_attempts = values['-ATTEMPTS-']
+
+                                stop_status = values['-STOP-']
+                                if (stop_status == 1):
+                                    break
+
                                 if (is_same_message == True):
                                     sg.Print('sending the same message')
                                     message = excel_data['Message'][0]
@@ -883,29 +1037,49 @@ while True:
                                                     msg = str(
                                                         count+2) + ". " + str(excel_data['Contact'][count]) + '✔️'
                                                 else:
+                                                    all_numbers.pop()
+                                                    sent_numbers.pop()
                                                     msg = str(
                                                         count+2) + ". " + str(excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt) + '✔️'
                                                 update_log(log, msg)
                                                 sg.Print(msg)
+                                                update_all_numbers(
+                                                    str(excel_data['Contact'][count]), 'Sent')
+                                                update_sent_numbers(
+                                                    str(excel_data['Contact'][count]), 'Sent')
+
                                             else:
                                                 if is_invalid == True and sent == False:
                                                     if (attempt == 1):
                                                         msg = str(count+2) + ". " + str(
                                                             excel_data['Contact'][count]) + " ❎ invalid user ❎"
                                                     else:
+                                                        all_numbers.pop()
+                                                        invalid_numbers.pop()
                                                         msg = str(count+2) + ". " + str(
                                                             excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt)+" ❎ invalid user ❎"
                                                     update_log(log, msg)
                                                     sg.Print(msg)
+                                                    update_all_numbers(
+                                                        str(excel_data['Contact'][count]), 'Invalid')
+                                                    update_invalid_numbers(
+                                                        str(excel_data['Contact'][count]), 'Invalid')
+
                                                 else:
                                                     if (attempt == 1):
                                                         msg = msg = str(
                                                             count+2) + ". " + str(excel_data['Contact'][count]) + '❌'
                                                     else:
+                                                        all_numbers.pop()
+                                                        not_sent_numbers.pop()
                                                         msg = str(
                                                             count+2) + ". " + str(excel_data['Contact'][count]) + ' ATTEMPT '+str(attempt) + '❌'
                                                     update_log(log, msg)
                                                     sg.Print(msg)
+                                                    update_all_numbers(
+                                                        str(excel_data['Contact'][count]), 'Not Sent')
+                                                    update_not_sent_numbers(
+                                                        str(excel_data['Contact'][count]), 'Not Sent')
 
                         except:
                             msg = "could not complete all the numbers"
