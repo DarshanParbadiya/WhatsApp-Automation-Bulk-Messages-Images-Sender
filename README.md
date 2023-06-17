@@ -6,6 +6,7 @@ This project helps to send bluk whatsapp messages without saving in contacts. Si
 Exported CSV will be present in the same folder where this software is located.
 ![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/8441035d-e0ad-4566-bf89-e81490e6b406)
 
+![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/049e730a-010c-4429-a73e-72e2102c2db8)
 
 
 ### This project containts script for running above software
