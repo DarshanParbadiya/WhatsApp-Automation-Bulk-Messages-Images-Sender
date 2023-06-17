@@ -2,7 +2,7 @@
 
 This project helps to send bluk whatsapp messages without saving in contacts. Simply put contact numbers into EXCEL sheet, then run this scripts accordingly to your need.
 
-### GUI of this same script can be found in release v1.3
+### GUI of this same script can be found in release v1.3 : (Download)[https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/releases/tag/v1.3]
 Exported CSV will be present in the same folder where this software is located.
 ![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/8441035d-e0ad-4566-bf89-e81490e6b406)
 
