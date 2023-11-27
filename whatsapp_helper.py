@@ -291,9 +291,14 @@ while True:
             from selenium.webdriver.common.by import By
             from webdriver_manager.chrome import ChromeDriverManager
             from time import sleep
+            # from selenium import webdriver
+
             import pandas
-            driver = webdriver.Chrome(ChromeDriverManager().install())
+            # this is used for lower version of selenium
+            # driver = webdriver.Chrome(ChromeDriverManager().install())
+            driver = webdriver.Chrome()
             driver.get('https://web.whatsapp.com')
+
             # input("Press ENTER after login into Whatsapp Web and your chats are visiable.")
             sleep(2)
             ch = sg.popup_yes_no('Is WhatsApp loaded?', title='YesNo')
