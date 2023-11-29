@@ -97,7 +97,7 @@ pip install selenium
   ![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/1826efad-719a-4fd7-ba22-b7f757a79ca7)
 change this values accordingly when whatsappweb html tags and classes gets changed.
 
-## Troubleshotting 
+## Troubleshooting  
  ![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/447d3907-3c6e-4de3-b086-64b33f20c580)
 
 If whatsapp web is working slow and shows loading chat in your computer then change initial wait 
