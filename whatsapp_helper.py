@@ -163,6 +163,15 @@ def update_numbers_list(excel_msg, msg):
     window['-numbers list-'].update(excel_msg)
 
 
+# ----------------------------------  HTML tags and classes for whatsapp web buttons --------------------------------
+message_text_box_val = "//span[@class='selectable-text copyable-text']"
+click_btn_val = "//button[@class='tvf2evcx oq44ahr5 lb5m6g5c svlsagor p2rjqpw5 epia9gcq']"
+number_invalid_btn_val = "//button[@class='emrlamx0 aiput80m h1a80dm5 sta02ykp g0rxnol2 l7jjieqr hnx8ox4h f8jlpxt4 l1l4so3b le5p0ye3 m2gb0jvt rfxpxord gwd8mfxi mnh9o63b qmy7ya1v dcuuyf4k swfxs4et bgr8sfoe a6r886iw fx1ldmn8 orxa12fk bkifpc9x rpz5dbxo bn27j4ou oixtjehm hjo1mxmu snayiamo szmswy5k']"
+attachment_button_val = "//span[@data-icon='attach-menu-plus']"
+image_box_val = "//input[@accept='image/*,video/mp4,video/3gpp,video/quicktime']"
+click_btn_val_img = "//div[@class='p357zi0d gndfcl4n ac2vgrno mh8l8k0y k45dudtp i5tg98hk f9ovudaz przvwfww gx1rr48f f8jlpxt4 hnx8ox4h k17s6i4e ofejerhi os0tgls2 g9p5wyxn i0tg5vk9 aoogvgrq o2zu3hjb hftcxtij rtx6r8la e3b81npk oa9ii99z p1ii4mzz']"
+
+
 while True:
     event, values = window.read()
     if event == 'Exit' or event == sg.WIN_CLOSED:
@@ -429,7 +438,7 @@ while True:
                                                             str(wait_attachment)
                                                         sg.Print(msg)
                                                         message_text_box = WebDriverWait(driver, wait_attachment).until(
-                                                            EC.element_to_be_clickable((By.XPATH, "//span[@class='selectable-text copyable-text']")))
+                                                            EC.element_to_be_clickable((By.XPATH,  message_text_box_val)))
                                                     except Exception as e:
                                                         msg = "can not find input message box because" + \
                                                             str(e)
@@ -448,7 +457,7 @@ while True:
                                                         str(attempt)
 
                                                     click_btn = WebDriverWait(driver, wait_attachment).until(EC.element_to_be_clickable(
-                                                        (By.XPATH, "//button[@data-testid='compose-btn-send']")))
+                                                        (By.XPATH,  click_btn_val)))
                                                     msg = 'successfully located a chat send button'
 
                                                 except:
@@ -462,7 +471,7 @@ while True:
                                                             str(invalid_wait_time) + " ❎"
                                                         sg.Print(msg)
                                                         number_invalid_btn = WebDriverWait(driver, invalid_wait_time).until(
-                                                            EC.element_to_be_clickable((By.XPATH, "//button[@data-testid='popup-controls-ok']")))
+                                                            EC.element_to_be_clickable((By.XPATH,  number_invalid_btn_val)))
                                                     except:
 
                                                         msg = "not found ❎invalid yet so, to check twice second attempt"
@@ -672,7 +681,7 @@ while True:
                                                         str(attempt)
                                                     sg.Print(msg)
                                                     attachment_button = WebDriverWait(driver, wait_attachment).until(
-                                                        EC.element_to_be_clickable((By.XPATH, "//span[@data-testid='clip']")))
+                                                        EC.element_to_be_clickable((By.XPATH,  attachment_button_val)))
                                                 except:  # can not locate so checking invalid and terminate if yes
                                                     msg = "error finding attachment button " + \
                                                         " attempt " + \
@@ -683,7 +692,7 @@ while True:
                                                         msg = "Checking for invalid ❎"
                                                         sg.Print(msg)
                                                         number_invalid_btn = WebDriverWait(driver, invalid_wait_time).until(
-                                                            EC.element_to_be_clickable((By.XPATH, "//button[@data-testid='popup-controls-ok']")))
+                                                            EC.element_to_be_clickable((By.XPATH, number_invalid_btn_val)))
                                                     except:
 
                                                         msg = "not found ❎invalid yet so, to check twice second attempt"
@@ -716,7 +725,7 @@ while True:
                                                 sg.Print(msg)
                                                 try:  # locating image attach button
                                                     image_box = driver.find_element(
-                                                        By.XPATH, "//input[@accept='image/*,video/mp4,video/3gpp,video/quicktime']")
+                                                        By.XPATH,  image_box_val)
                                                 except:  # unable to find image attach button
                                                     msg = "can not click on image attach so going for another attempt"
                                                     sg.Print(msg)
@@ -730,7 +739,7 @@ while True:
                                                     sg.Print(msg)
                                                     # ----------------image loaded successfully -------------------
                                                     click_btn = WebDriverWait(driver, image_upload_time).until(EC.element_to_be_clickable(
-                                                        (By.XPATH, "//div[@class='p357zi0d gndfcl4n ac2vgrno mh8l8k0y k45dudtp i5tg98hk f9ovudaz przvwfww gx1rr48f f8jlpxt4 hnx8ox4h k17s6i4e ofejerhi os0tgls2 g9p5wyxn i0tg5vk9 aoogvgrq o2zu3hjb hftcxtij rtx6r8la e3b81npk oa9ii99z p1ii4mzz']")))
+                                                        (By.XPATH,  click_btn_val_img)))
                                                     click_btn.click()
                                                     msg = 'successfully clicked the Image send button'
                                                     sg.Print(msg)
@@ -915,7 +924,7 @@ while True:
                                                             str(wait_attachment)
                                                         sg.Print(msg)
                                                         message_text_box = WebDriverWait(driver, wait_attachment).until(
-                                                            EC.element_to_be_clickable((By.XPATH, "//span[@class='selectable-text copyable-text']")))
+                                                            EC.element_to_be_clickable((By.XPATH,  message_text_box)))
                                                     except Exception as e:
                                                         msg = "can not find input message box because" + \
                                                             str(e)
@@ -925,7 +934,7 @@ while True:
                                                             msg = "Checking for invalid ❎"
                                                             sg.Print(msg)
                                                             number_invalid_btn = WebDriverWait(driver, invalid_wait_time).until(
-                                                                EC.element_to_be_clickable((By.XPATH, "//button[@data-testid='popup-controls-ok']")))
+                                                                EC.element_to_be_clickable((By.XPATH, number_invalid_btn_val)))
                                                         except:
 
                                                             msg = "not found ❎invalid yet so, to check twice second attempt"
@@ -955,7 +964,7 @@ while True:
                                                         str(attempt)
                                                     sg.Print(msg)
                                                     attachment_button = WebDriverWait(driver, wait_attachment).until(
-                                                        EC.element_to_be_clickable((By.XPATH, "//span[@data-testid='clip']")))
+                                                        EC.element_to_be_clickable((By.XPATH, attachment_button_val)))
                                                 except:  # can not locate so checking invalid and terminate if yes
                                                     msg = "error finding attachment button " + \
                                                         " attempt " + \
@@ -966,7 +975,7 @@ while True:
                                                         msg = "Checking for invalid ❎"
                                                         sg.Print(msg)
                                                         number_invalid_btn = WebDriverWait(driver, invalid_wait_time).until(
-                                                            EC.element_to_be_clickable((By.XPATH, "//button[@data-testid='popup-controls-ok']")))
+                                                            EC.element_to_be_clickable((By.XPATH, number_invalid_btn_val)))
                                                     except:
 
                                                         msg = "not found ❎invalid yet so, to check twice second attempt"
@@ -999,7 +1008,7 @@ while True:
                                                 sg.Print(msg)
                                                 try:  # locating image attach button
                                                     image_box = driver.find_element(
-                                                        By.XPATH, "//input[@accept='image/*,video/mp4,video/3gpp,video/quicktime']")
+                                                        By.XPATH, image_box_val)
                                                 except:  # unable to find image attach button
                                                     msg = "can not click on image attach so going for another attempt"
                                                     sg.Print(msg)
@@ -1012,7 +1021,7 @@ while True:
                                                     sg.Print(msg)
                                                     # ----------------image loaded successfully -------------------
                                                     click_btn = WebDriverWait(driver, image_upload_time).until(EC.element_to_be_clickable(
-                                                        (By.XPATH, "//div[@class='p357zi0d gndfcl4n ac2vgrno mh8l8k0y k45dudtp i5tg98hk f9ovudaz przvwfww gx1rr48f f8jlpxt4 hnx8ox4h k17s6i4e ofejerhi os0tgls2 g9p5wyxn i0tg5vk9 aoogvgrq o2zu3hjb hftcxtij rtx6r8la e3b81npk oa9ii99z p1ii4mzz']")))
+                                                        (By.XPATH, click_btn_val_img)))
                                                     click_btn.click()
                                                     msg = 'successfully clicked the Image send button'
                                                     sg.Print(msg)
