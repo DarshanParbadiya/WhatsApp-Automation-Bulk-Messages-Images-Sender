@@ -91,7 +91,11 @@ pip install selenium
 - Load the Excel file and image accodingly.
 - Choose type of message to be sent and click on send.
 - This also opens debugger window to show which steps are being performed by the software. 
-- at the end of the script status of the message will be available in status section. 
+- at the end of the script status of the message will be available in status section.
+
+## updating the script when whatsapp web interface changes
+  ![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/1826efad-719a-4fd7-ba22-b7f757a79ca7)
+change this values accordingly when whatsappweb html tags and classes gets changed.
 
 ## FAQ
 
