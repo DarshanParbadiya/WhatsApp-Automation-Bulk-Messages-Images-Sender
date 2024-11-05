@@ -1,20 +1,23 @@
 # WhatsApp-Automation-Bulk-Messages-Sender
 
-This project helps to send bluk whatsapp messages without saving in contacts. Simply put contact numbers into EXCEL sheet, then run this scripts accordingly to your need.
+This project helps to send whatsapp messages without saving contact numbers. Simply put contact numbers into CSV file, then run this scripts accordingly to your need.
 
-### GUI of this same script can be found in release v1.4 : [Download from here](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/releases/tag/v1.4)
+### GUI of this same script can be found in release v2.0 : [Download from here](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/releases/tag/v2.0)
 
 Exported CSV will be present in the same folder where this software is located.
-![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/8441035d-e0ad-4566-bf89-e81490e6b406)
-
-![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/049e730a-010c-4429-a73e-72e2102c2db8)
+![image](https://github.com/user-attachments/assets/681271eb-cd8c-4cbd-ae59-0f76ce9cdd5f)
 
 #### Different messages types list : choose one of the options from here.
-![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/eff83133-1cbc-43ed-abac-2d205dbbe588)
 
+![image](https://github.com/user-attachments/assets/b4cea075-0cce-4475-9beb-37a77fd79655)
 
+![image](https://github.com/user-attachments/assets/1a9d23e7-a307-4a6d-b3e1-07a092e37dc4)
 
-### This project containts script for running above software
+#### Messages can be loaded from CSV, but if you message contains multiple paragraphs and commas then load the message from here.
+
+![image](https://github.com/user-attachments/assets/94cf51b1-1599-4133-b91f-0d3f178c6863)
+
+### This project contains script for running above software
 
 ## Note
 
@@ -29,7 +32,13 @@ This is only for educational purposes, there are WhatsApp Business APIs availabl
 - for script to run please install this packages using the commands given here
 - python is required to run below commands and the software itself so install it before using this script
 
-#### 1. Python 3.8: Download it from https://www.python.org/downloads
+```bash
+  pip install -r requirements.txt
+```
+
+- you can skip steps from 3 if you are install dependencies using requirements.txt
+
+#### 1. Python 3.11: Download it from https://www.python.org/downloads
 
 #### 2. Chrome : Download it from https://chrome.google.com
 
@@ -39,34 +48,16 @@ This is only for educational purposes, there are WhatsApp Business APIs availabl
   pip install pandas
 ```
 
-#### 4. Xlrd : Run in command prompt
-
-```bash
-  pip install xlrd
-```
-
-#### 5. Selenium: Run in command prompt
+#### 4. Selenium: Run in command prompt
 
 ```bash
 pip install selenium
 ```
 
-#### 6. Web Driver: Run in command prompt
+#### 5. Web Driver: Run in command prompt
 
 ```bash
   pip install webdriver_manager
-```
-
-#### 7.Openpyxl: Run in command prompt
-
-```bash
-  pip install openpyxl
-```
-
-#### 8.pysimplegui: Run in command prompt
-
-```bash
-  pip install pysimplegui
 ```
 
 ## 2. Downloading or clone this project
@@ -82,42 +73,37 @@ pip install selenium
 - Run this command using CMD from the same directory where this script is located
 
 ```bash
-  python whatsapp_helper.py
+  python main.py
 ```
-## 4. Instructions to use 
-- Use open Whatsapp button to open chrome tab and scan QR code
-- this step is only required once then you can load multiple excel file and send all the message again and again. No need to scan QR for next Excel file.
+
+## 4. Instructions to use
+
+- Use open Whatsapp button to open chrome tab and scan QR code & load the csv
 - After doing above step send message button becomes available.
-- Load the Excel file and image accodingly.
+- Load the csv file and image accordingly.
 - Choose type of message to be sent and click on send.
-- This also opens debugger window to show which steps are being performed by the software. 
-- at the end of the script status of the message will be available in status section.
+- This also opens debugger window to show which steps are being performed by the software.
 
 ## updating the script when whatsapp web interface changes
-  ![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/1826efad-719a-4fd7-ba22-b7f757a79ca7)
+
+![image](https://github.com/user-attachments/assets/9035b99e-76bf-43d6-a2e3-bd3b3e207ad9)
 change this values accordingly when whatsappweb html tags and classes gets changed.
 
-## Troubleshooting  
- ![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/447d3907-3c6e-4de3-b086-64b33f20c580)
+## Troubleshooting
 
-If whatsapp web is working slow and shows loading chat in your computer then change initial wait 
+![image](https://github.com/user-attachments/assets/f8410d8f-fb56-4e6b-b1cd-9416af3ce6e2)
+
+If whatsapp web is working slow and shows loading chat in your computer then change initial wait
 
 ## FAQ
 
 #### Question 1 How to install dependencies
 
-Install using cmd which can be opend by searching in start button of windows.
+Install using cmd which can be opened by searching in start button of windows.
 
 #### Question 2 Scripts are not working now what to do
 
 You only have to change this, because with updates whatsapp may change it's UI.
-
-```bash
-attachment_button = WebDriverWait(driver, 35).until(EC.element_to_be_clickable((By.XPATH, "//span[@data-testid='clip']")))
-```
-
-in above's code **change (By.XPATH, 'new whatsapp attributes')**
-for this you need to know little bit of HTML.  
 
 #### Question 3 errors due to changes in selenium syntax
 
@@ -131,7 +117,7 @@ If you have any feedback, please reach out to us at darshanparbadiya@gmail.com
 
 - Sending bulk messages
 - Sending same or different message choice
-- No need to save contacts before sending messaages
+- No need to save contacts before sending messages
 - Sending images with or without text.
 - Cross platform
 
