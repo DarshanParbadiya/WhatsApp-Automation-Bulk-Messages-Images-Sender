@@ -2,7 +2,7 @@
 
 This project helps to send bluk whatsapp messages without saving in contacts. Simply put contact numbers into EXCEL sheet, then run this scripts accordingly to your need.
 
-### GUI of this same script can be found in release v1.4 : [Download from here](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/releases/tag/v1.4)
+### GUI of this same script can be found in release v2.0 : [Download from here](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/releases/tag/v1.4)
 
 Exported CSV will be present in the same folder where this software is located.
 ![image](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/assets/65885245/8441035d-e0ad-4566-bf89-e81490e6b406)
@@ -14,7 +14,7 @@ Exported CSV will be present in the same folder where this software is located.
 
 
 
-### This project containts script for running above software
+### This project contains script for running above software
 
 ## Note
 
@@ -24,10 +24,15 @@ This is only for educational purposes, there are WhatsApp Business APIs availabl
 
 ## How to Use
 
-### 1. Install required modules for these scripts to run
+## 1. Install required modules for these scripts to run
 
 - for script to run please install this packages using the commands given here
 - python is required to run below commands and the software itself so install it before using this script
+
+```bash
+  pip install -r requirements.txt
+```
+- you can skip steps from 3 if you are install dependencies using requirements.txt
 
 #### 1. Python 3.8: Download it from https://www.python.org/downloads
 
@@ -55,18 +60,6 @@ pip install selenium
 
 ```bash
   pip install webdriver_manager
-```
-
-#### 7.Openpyxl: Run in command prompt
-
-```bash
-  pip install openpyxl
-```
-
-#### 8.pysimplegui: Run in command prompt
-
-```bash
-  pip install pysimplegui
 ```
 
 ## 2. Downloading or clone this project

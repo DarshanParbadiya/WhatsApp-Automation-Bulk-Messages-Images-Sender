@@ -1,0 +1,8 @@
+pyside6-uic index.ui > ui_index.py
+
+pyside6-rcc resources.qrc -o resources_rc.py
+
+
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\ChromeDebug"
+
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\ChromeDebug" --no-first-run --no-default-browser-check

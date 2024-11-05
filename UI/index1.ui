@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>811</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>818</width>
+      <height>524289</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0" rowspan="2" colspan="2">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QWidget" name="icon_text_widget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>129</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget{
+	background-color : black;
+	color : white;
+}
+
+QPushButton{
+	height : 25px;
+    border : none;
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QPushButton" name="pushButton_13">
+              <property name="layoutDirection">
+               <enum>Qt::LayoutDirection::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton:checked{
+	background-color : white;
+	border-radius : 3px;
+	color : black;
+padding : 3px;
+}</string>
+              </property>
+              <property name="text">
+               <string>       Whatsapp </string>
+              </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/Dark icons/facebook.svg</normaloff>
+                <normalon>:/icons/facebook.svg</normalon>
+                <selectedoff>:/Dark icons/facebook.svg</selectedoff>
+                <selectedon>:/icons/facebook.svg</selectedon>:/Dark icons/facebook.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>30</width>
+                <height>23</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frame_2">
+              <property name="frameShape">
+               <enum>QFrame::Shape::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QPushButton" name="pushButton_4">
+                 <property name="layoutDirection">
+                  <enum>Qt::LayoutDirection::LeftToRight</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton:checked{
+	background-color : white;
+	border-radius : 3px;
+	color : black;
+padding : 3px;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>       Manage   </string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources.qrc">
+                   <normaloff>:/Dark icons/cpu.svg</normaloff>
+                   <normalon>:/icons/cpu.svg</normalon>:/Dark icons/cpu.svg</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>25</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_12">
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton:checked{
+	background-color : white;
+	border-radius : 3px;
+	color : black;
+padding : 3px;
+}</string>
+            </property>
+            <property name="text">
+             <string>         Settings</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/Dark icons/grid.svg</normaloff>
+              <normalon>:/icons/grid.svg</normalon>:/Dark icons/grid.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>73</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>16777019</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QWidget" name="main_window_widget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>630</width>
+           <height>550</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color : rgb(78, 255, 158)</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>601</width>
+            <height>511</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QFrame" name="frame_3">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QStackedWidget" name="stackedWidget">
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
+                <widget class="QWidget" name="page">
+                 <widget class="QLabel" name="label">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>0</y>
+                    <width>161</width>
+                    <height>61</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>23</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font-weight : bold;
+color : black;</string>
+                  </property>
+                  <property name="text">
+                   <string>Dashboard</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="open_whatsapp_button">
+                  <property name="geometry">
+                   <rect>
+                    <x>30</x>
+                    <y>120</y>
+                    <width>111</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color : black;
+color : white;
+border-radius : 10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Open WhatsApp</string>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="select_message_type_combo_box">
+                  <property name="geometry">
+                   <rect>
+                    <x>30</x>
+                    <y>190</y>
+                    <width>271</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="toolTip">
+                   <string>Select Option</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color : black;
+color : white;
+border-radius : 10px;
+padding-left :20px</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Select</string>
+                   </property>
+                  </item>
+                 </widget>
+                 <widget class="QPushButton" name="send_button">
+                  <property name="geometry">
+                   <rect>
+                    <x>340</x>
+                    <y>190</y>
+                    <width>101</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color : black;
+color : white;
+border-radius : 10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Send</string>
+                  </property>
+                 </widget>
+                </widget>
+                <widget class="QWidget" name="page_2">
+                 <widget class="QLabel" name="label_2">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>0</y>
+                    <width>161</width>
+                    <height>61</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>23</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font-weight : bold;
+color : black;</string>
+                  </property>
+                  <property name="text">
+                   <string>Settings</string>
+                  </property>
+                 </widget>
+                </widget>
+                <widget class="QWidget" name="page_3">
+                 <widget class="QLabel" name="label_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>421</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>23</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font-weight : bold;
+color : black;</string>
+                  </property>
+                  <property name="text">
+                   <string>Mange Files</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="load_image">
+                  <property name="geometry">
+                   <rect>
+                    <x>430</x>
+                    <y>200</y>
+                    <width>101</width>
+                    <height>31</height>
+                   </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color : black;
+color : white;
+border-radius : 10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Load Image</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="openWhatsapp_button_2">
+                  <property name="geometry">
+                   <rect>
+                    <x>430</x>
+                    <y>130</y>
+                    <width>111</width>
+                    <height>31</height>
+                   </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color : black;
+color : white;
+border-radius : 10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Load Excel</string>
+                  </property>
+                 </widget>
+                 <widget class="QPlainTextEdit" name="excel_text_edit">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>130</y>
+                    <width>391</width>
+                    <height>31</height>
+                   </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color : black;
+color : white;
+border-radius : 10px;</string>
+                  </property>
+                 </widget>
+                 <widget class="QPlainTextEdit" name="excel_text_edit_2">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>200</y>
+                    <width>381</width>
+                    <height>31</height>
+                   </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color : black;
+color : white;
+border-radius : 10px;</string>
+                  </property>
+                 </widget>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="1">
+      <widget class="QWidget" name="header_widget" native="true"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
