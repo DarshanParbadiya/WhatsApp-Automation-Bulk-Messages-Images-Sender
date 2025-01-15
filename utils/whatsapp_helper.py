@@ -69,7 +69,11 @@ class Whatsapp():
 
     def get_contacts(self):
         try:
-            df = ContactNumber.load_csv_to_dataframe(self.csv_path)
+            # check the extension of the file
+            # If .csv then load csv and If .xls then load the Excel File
+            print(self.csv_path)
+            df = ContactNumber.load_contacts(self.csv_path)
+
         except Exception as e:
             self.show_error_dialog_box(e)
             return False
