@@ -2,6 +2,12 @@
 
 This project helps to send whatsapp messages without saving contact numbers. Simply put contact numbers into CSV file, then run this scripts accordingly to your need.
 
+### Supporting Documentation
+
+Find additional guides here:
+- [Resolving the UI Changes](Docs/Resolving%20the%20UI%20changes.md)
+- [Persisting the Chrome Instance Without Losing Session Login](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/blob/master/Docs/chrome%20session%20persistance.md)
+
 ### GUI of this same script can be found in release v2.0 : [Download from here](https://github.com/DarshanParbadiya/WhatsApp-Automation-Bulk-Messages-Images-Sender/releases/tag/v2.0)
 
 Exported CSV will be present in the same folder where this software is located.
