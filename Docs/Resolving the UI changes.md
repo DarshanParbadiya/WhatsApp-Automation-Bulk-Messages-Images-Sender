@@ -15,6 +15,7 @@ If you encounter an error where the script cannot find the send button or any si
 - If WhatsApp Web has multiple elements with `aria-label="Send"`, the script may fail to send messages.
 - In this case, **code refactoring is required**, as there is no other workaround.
 - However, if the `aria-label` text itself changes, you can easily update it without modifying the script.
+  
 ![image](https://github.com/user-attachments/assets/c2d13046-42b0-4891-87a0-5bd6831d7824)
 
 
@@ -22,14 +23,18 @@ If you encounter an error where the script cannot find the send button or any si
 - Locate the `config.ini` file in the project directory.
 - Update the relevant values under the appropriate section.
 - This will allow the script to adapt to any changes in WhatsApp Web’s UI.
+  
+![image](https://github.com/user-attachments/assets/638cfb77-d7f1-4958-8b59-fd9aa2b4dbfb)
 
-![image](https://github.com/user-attachments/assets/85e675c4-ceca-47f3-a65e-cb5512f64d01)
+
 
 ### **Step 4: Changing Settings from the App Interface**
 - Navigate to the **Settings** page from the left-hand navigation bar.
 - Modify values directly within the app.
 - Some values are based on `aria-label`, while others use `XPath` or `CSS classes`.
 - Ensure that you are modifying the correct selector based on how the script interacts with WhatsApp Web.
+  
+![image](https://github.com/user-attachments/assets/85e675c4-ceca-47f3-a65e-cb5512f64d01)
 
 ### **Step 5: Restart the Program**
 - After saving any changes in `config.ini` or through the settings page, **restart the program** for changes to take effect.
