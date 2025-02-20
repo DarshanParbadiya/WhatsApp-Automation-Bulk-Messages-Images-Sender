@@ -42,7 +42,6 @@ class Whatsapp():
             print(*args)
 
     def open_whatsapp(self):
-        print(self.window_instance.config_instance.single_instance)
         if self.window_instance.config_instance.single_instance == "True":
             self.printf('single Instance is on')
             # @Experimental
