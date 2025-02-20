@@ -109,6 +109,13 @@ You only have to change this, because with updates whatsapp may change it's UI.
 
 follow official documentation to change syntax if it changes in the future.
 
+#### Question 4 I don't want to terminate the session after closing this app
+you can persist the login info by opening the chrome using the below command
+Go to the config.ini and change the value,single_instance = True
+```bash
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\selenium\ChromeProfile"
+```
+
 ## Feedback
 
 If you have any feedback, please reach out to us at darshanparbadiya@gmail.com

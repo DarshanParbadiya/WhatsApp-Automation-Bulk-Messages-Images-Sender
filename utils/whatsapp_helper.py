@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from helper import ChromeLauncher
 from time import sleep
 import pandas
 import urllib
@@ -41,15 +42,18 @@ class Whatsapp():
             print(*args)
 
     def open_whatsapp(self):
-
-        self.driver = webdriver.Chrome()
-
-        # Set up Chrome options to connect to the debugging port
-        # chrome_options = Options()
-        # chrome_options.debugger_address = "localhost:9222"
-        # # Initialize the driver without starting a new browser instance
-        # self.driver = webdriver.Chrome(service=Service(), options=chrome_options)
-
+        print(self.window_instance.config_instance.single_instance)
+        if self.window_instance.config_instance.single_instance == "True":
+            self.printf('single Instance is on')
+            # @Experimental
+            # ChromeLauncher.launch_chrome()
+            # Set up Chrome options to connect to the debugging port
+            chrome_options = Options()
+            chrome_options.debugger_address = "localhost:9222"
+            # Initialize the driver without starting a new browser instance
+            self.driver = webdriver.Chrome(service=Service(), options=chrome_options)
+        else:
+            self.driver = webdriver.Chrome()
         self.driver.get('https://web.whatsapp.com')
         self.is_driver_available = True
 

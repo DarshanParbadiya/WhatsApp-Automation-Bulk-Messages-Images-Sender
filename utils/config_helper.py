@@ -22,6 +22,8 @@ class Config():
         self.wait_time_spin_box = self.config['Timers']['wait']
         self.upload_time_spin_box = self.config['Timers']['upload_wait']
         self.sleep_time_spin_box = self.config['Timers']['sleep_time']
+        self.single_instance = self.config['Chrome']['single_instance']
+
         # print(attachment_button_val)
         # print(send_button_value)
         # print(send_message_button_text)
@@ -63,6 +65,7 @@ class Config():
         wait_time_spin_box = self.config['Timers']['wait']
         upload_time_spin_box = self.config['Timers']['upload_wait']
         sleep_time_spin_box = self.config['Timers']['sleep_time']
+
 
         self.window_instance.invalid_modal_text.setPlainText(str(invalid_modal_text))
         self.window_instance.invalid_modal_okay_button_class.setPlainText(str(invalid_modal_okay_button_class))
